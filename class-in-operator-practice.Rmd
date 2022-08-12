@@ -1,0 +1,32 @@
+---
+title: "Examples"
+author: "Michelle Lam"
+date: "2022-08-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(palmerpenguins)
+library(tidyverse)
+```
+
+### Change class of column values
+```{r}
+# Change the year column from a class of numeric to character.
+penguins_year_chr <- penguins |> 
+  mutate(year = as.character(year))
+
+# Change the year column class back to numeric from a character.
+penguins_year_num <- penguins_year_chr |> 
+  mutate(year = as.numeric(year))
+```
+
+### %in% Operator practice
+```{r}
+# Use the %in% operator to look at the values in each row in this vector to filter the data frame.
+penguins_ad_ch <- penguins_year_num |> 
+  filter(species %in% c("Adelie", "Chinstrap"))
+```
+
